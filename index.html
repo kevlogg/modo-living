@@ -618,30 +618,32 @@
       overflow: hidden;
     }
 
-    .model-card:nth-child(1) .model-image { background: linear-gradient(145deg, #1e1e1e 0%, #2a2a28 40%, #1a1815 100%); }
-    .model-card:nth-child(2) .model-image { background: linear-gradient(145deg, #222220 0%, #2d2b26 40%, #1c1b18 100%); }
-    .model-card:nth-child(3) .model-image { background: linear-gradient(145deg, #1f2020 0%, #272b27 40%, #1a1d1a 100%); }
-    .model-card:nth-child(4) .model-image { background: linear-gradient(145deg, #1e1e22 0%, #262630 40%, #16161e 100%); }
-    .model-card:nth-child(5) .model-image { background: linear-gradient(145deg, #22201a 0%, #2e2b22 40%, #1c1a14 100%); }
-    .model-card:nth-child(6) .model-image { background: linear-gradient(145deg, #1e2018 0%, #282a20 40%, #181a12 100%); }
-
-    .model-image-inner {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .model-sofa-icon {
-      opacity: 0.12;
-      width: 55%;
-    }
+    .model-card:nth-child(1) .model-image { background: #1a1815; }
+    .model-card:nth-child(2) .model-image { background: #1c1b18; }
+    .model-card:nth-child(3) .model-image { background: #1a1d1a; }
+    .model-card:nth-child(4) .model-image { background: #16161e; }
+    .model-card:nth-child(5) .model-image { background: #1c1a14; }
+    .model-card:nth-child(6) .model-image { background: #181a12; }
 
     .model-image-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.4) 100%);
+      background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.55) 100%);
+    }
+
+    .model-image img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      transition: transform 0.55s ease;
+    }
+
+    .model-card:hover .model-image img {
+      transform: scale(1.04);
     }
 
     .model-tag {
@@ -942,6 +944,25 @@
       z-index: 1;
     }
 
+    .showroom-photo-placeholder img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      border-radius: var(--radius);
+    }
+
+    .hero-image-placeholder img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+    }
+
     /* ====================================
        PROCESO
     ==================================== */
@@ -1049,37 +1070,21 @@
     .gallery-item:nth-child(1) { grid-row: span 2; }
     .gallery-item:nth-child(4) { grid-row: span 2; }
 
-    .gallery-placeholder {
+    .gallery-grid {
+      grid-template-rows: 220px 220px;
+    }
+
+    .gallery-item img {
       width: 100%;
       height: 100%;
-      min-height: 200px;
+      object-fit: cover;
+      object-position: center;
       display: block;
+      transition: transform 0.55s ease;
     }
 
-    .gallery-item:nth-child(1) .gallery-placeholder {
-      background: linear-gradient(145deg, #1f1e1c 0%, #2b2926 100%);
-      min-height: 400px;
-    }
-
-    .gallery-item:nth-child(2) .gallery-placeholder {
-      background: linear-gradient(145deg, #26241c 0%, #2e2c22 100%);
-    }
-
-    .gallery-item:nth-child(3) .gallery-placeholder {
-      background: linear-gradient(145deg, #1e2220 0%, #252e27 100%);
-    }
-
-    .gallery-item:nth-child(4) .gallery-placeholder {
-      background: linear-gradient(145deg, #1c1c20 0%, #26262e 100%);
-      min-height: 400px;
-    }
-
-    .gallery-item:nth-child(5) .gallery-placeholder {
-      background: linear-gradient(145deg, #221e18 0%, #2e2820 100%);
-    }
-
-    .gallery-item:nth-child(6) .gallery-placeholder {
-      background: linear-gradient(145deg, #1c201c 0%, #242a24 100%);
+    .gallery-item:hover img {
+      transform: scale(1.04);
     }
 
     .gallery-overlay {
@@ -1479,9 +1484,9 @@
         grid-row: span 1;
       }
 
-      .gallery-item:nth-child(1) .gallery-placeholder,
-      .gallery-item:nth-child(4) .gallery-placeholder {
-        min-height: 200px;
+      .gallery-item:nth-child(1),
+      .gallery-item:nth-child(4) {
+        height: 200px;
       }
 
       .testi-grid {
@@ -1611,30 +1616,13 @@
     <div id="hero">
       <div class="hero-bg"></div>
 
-      <!-- Placeholder sillón grande -->
+      <!-- Imagen hero sillón -->
       <div class="hero-image-placeholder" aria-hidden="true">
-        <div class="hero-image-inner" style="position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:center;padding-bottom:8%;">
-          <!-- Sillón esquinero grande SVG -->
-          <svg class="hero-sofa-svg" viewBox="0 0 580 280" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <!-- Sección principal -->
-            <rect x="60" y="60" width="360" height="140" rx="18" fill="#C9A84C" opacity="0.9"/>
-            <!-- Sección L -->
-            <rect x="380" y="90" width="160" height="140" rx="18" fill="#C9A84C" opacity="0.75"/>
-            <!-- Respaldo principal -->
-            <rect x="60" y="30" width="280" height="60" rx="14" fill="#C9A84C" opacity="0.7"/>
-            <!-- Respaldo L -->
-            <rect x="420" y="60" width="120" height="60" rx="14" fill="#C9A84C" opacity="0.6"/>
-            <!-- Patas doradas -->
-            <rect x="80" y="198" width="14" height="38" rx="4" fill="#E2C06A" opacity="0.95"/>
-            <rect x="370" y="198" width="14" height="38" rx="4" fill="#E2C06A" opacity="0.95"/>
-            <rect x="510" y="198" width="14" height="38" rx="4" fill="#E2C06A" opacity="0.95"/>
-            <rect x="400" y="228" width="14" height="8" rx="4" fill="#E2C06A" opacity="0.9"/>
-            <!-- Cojines -->
-            <rect x="75" y="70" width="120" height="120" rx="10" fill="#B89040" opacity="0.35"/>
-            <rect x="205" y="70" width="100" height="120" rx="10" fill="#B89040" opacity="0.28"/>
-            <rect x="395" y="100" width="100" height="120" rx="10" fill="#B89040" opacity="0.28"/>
-          </svg>
-        </div>
+        <img
+          src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1600&q=80"
+          alt="Sillón seccional premium Modo Living"
+          loading="eager"
+        />
       </div>
 
       <div class="container">
@@ -1719,16 +1707,11 @@
           <!-- Brooklyn -->
           <article class="model-card reveal reveal-delay-1">
             <div class="model-image">
-              <div class="model-image-inner">
-                <svg class="model-sofa-icon" viewBox="0 0 300 160" fill="none" aria-hidden="true">
-                  <rect x="20" y="30" width="190" height="80" rx="12" fill="#C9A84C"/>
-                  <rect x="180" y="50" width="90" height="80" rx="12" fill="#C9A84C" opacity="0.75"/>
-                  <rect x="20" y="15" width="150" height="35" rx="10" fill="#C9A84C" opacity="0.7"/>
-                  <rect x="33" y="108" width="8" height="20" rx="3" fill="#E2C06A"/>
-                  <rect x="196" y="108" width="8" height="20" rx="3" fill="#E2C06A"/>
-                  <rect x="258" y="108" width="8" height="20" rx="3" fill="#E2C06A"/>
-                </svg>
-              </div>
+              <img
+                src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80"
+                alt="Modelo Brooklyn - Seccional en L gris oscuro"
+                loading="lazy"
+              />
               <div class="model-image-overlay"></div>
               <span class="model-tag">Seccional en L</span>
             </div>
@@ -1748,18 +1731,11 @@
           <!-- Soho -->
           <article class="model-card reveal reveal-delay-2">
             <div class="model-image">
-              <div class="model-image-inner">
-                <svg class="model-sofa-icon" viewBox="0 0 300 160" fill="none" aria-hidden="true">
-                  <rect x="15" y="35" width="270" height="80" rx="12" fill="#C9A84C"/>
-                  <rect x="15" y="18" width="270" height="38" rx="10" fill="#C9A84C" opacity="0.65"/>
-                  <!-- tufted dots -->
-                  <circle cx="80" cy="57" r="4" fill="#9E7D2E" opacity="0.5"/>
-                  <circle cx="150" cy="57" r="4" fill="#9E7D2E" opacity="0.5"/>
-                  <circle cx="220" cy="57" r="4" fill="#9E7D2E" opacity="0.5"/>
-                  <rect x="30" y="113" width="8" height="20" rx="3" fill="#E2C06A"/>
-                  <rect x="262" y="113" width="8" height="20" rx="3" fill="#E2C06A"/>
-                </svg>
-              </div>
+              <img
+                src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=800&q=80"
+                alt="Modelo Soho - Sillón 3 cuerpos tufteado"
+                loading="lazy"
+              />
               <div class="model-image-overlay"></div>
               <span class="model-tag">3 cuerpos</span>
             </div>
@@ -1779,14 +1755,11 @@
           <!-- Manhattan -->
           <article class="model-card reveal reveal-delay-3">
             <div class="model-image">
-              <div class="model-image-inner">
-                <svg class="model-sofa-icon" viewBox="0 0 300 160" fill="none" aria-hidden="true">
-                  <rect x="30" y="38" width="240" height="78" rx="12" fill="#C9A84C"/>
-                  <rect x="30" y="22" width="240" height="36" rx="10" fill="#C9A84C" opacity="0.65"/>
-                  <rect x="43" y="114" width="8" height="18" rx="3" fill="#E2C06A"/>
-                  <rect x="249" y="114" width="8" height="18" rx="3" fill="#E2C06A"/>
-                </svg>
-              </div>
+              <img
+                src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=800&q=80"
+                alt="Modelo Manhattan - Sillón 2 cuerpos compacto"
+                loading="lazy"
+              />
               <div class="model-image-overlay"></div>
               <span class="model-tag">2 cuerpos compacto</span>
             </div>
@@ -1806,15 +1779,11 @@
           <!-- Chelsea -->
           <article class="model-card reveal reveal-delay-4">
             <div class="model-image">
-              <div class="model-image-inner">
-                <svg class="model-sofa-icon" viewBox="0 0 300 160" fill="none" aria-hidden="true">
-                  <rect x="15" y="35" width="195" height="80" rx="12" fill="#C9A84C"/>
-                  <rect x="185" y="60" width="95" height="55" rx="10" fill="#C9A84C" opacity="0.7"/>
-                  <rect x="15" y="18" width="155" height="36" rx="10" fill="#C9A84C" opacity="0.65"/>
-                  <rect x="28" y="113" width="8" height="20" rx="3" fill="#E2C06A"/>
-                  <rect x="265" y="113" width="8" height="20" rx="3" fill="#E2C06A"/>
-                </svg>
-              </div>
+              <img
+                src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=800&q=80"
+                alt="Modelo Chelsea - Esquinero con puff ultra confort"
+                loading="lazy"
+              />
               <div class="model-image-overlay"></div>
               <span class="model-tag">Esquinero con puff</span>
             </div>
@@ -1834,14 +1803,11 @@
           <!-- Tribeca -->
           <article class="model-card reveal reveal-delay-5">
             <div class="model-image">
-              <div class="model-image-inner">
-                <svg class="model-sofa-icon" viewBox="0 0 300 160" fill="none" aria-hidden="true">
-                  <rect x="40" y="40" width="220" height="75" rx="10" fill="#C9A84C"/>
-                  <rect x="40" y="24" width="220" height="34" rx="8" fill="#C9A84C" opacity="0.6"/>
-                  <rect x="52" y="113" width="7" height="16" rx="3" fill="#E2C06A"/>
-                  <rect x="241" y="113" width="7" height="16" rx="3" fill="#E2C06A"/>
-                </svg>
-              </div>
+              <img
+                src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80"
+                alt="Modelo Tribeca - Loveseat 2 cuerpos minimalista"
+                loading="lazy"
+              />
               <div class="model-image-overlay"></div>
               <span class="model-tag">Loveseat 2 cuerpos</span>
             </div>
@@ -1861,17 +1827,11 @@
           <!-- Midtown -->
           <article class="model-card reveal reveal-delay-6">
             <div class="model-image">
-              <div class="model-image-inner">
-                <svg class="model-sofa-icon" viewBox="0 0 300 160" fill="none" aria-hidden="true">
-                  <rect x="10" y="38" width="130" height="78" rx="11" fill="#C9A84C"/>
-                  <rect x="130" y="38" width="90" height="78" rx="11" fill="#C9A84C" opacity="0.85"/>
-                  <rect x="210" y="38" width="80" height="78" rx="11" fill="#C9A84C" opacity="0.72"/>
-                  <rect x="10" y="20" width="130" height="35" rx="9" fill="#C9A84C" opacity="0.65"/>
-                  <rect x="140" y="20" width="150" height="35" rx="9" fill="#C9A84C" opacity="0.55"/>
-                  <rect x="22" y="114" width="7" height="18" rx="3" fill="#E2C06A"/>
-                  <rect x="281" y="114" width="7" height="18" rx="3" fill="#E2C06A"/>
-                </svg>
-              </div>
+              <img
+                src="https://images.unsplash.com/photo-1560185127-6ed189bf02f4?auto=format&fit=crop&w=800&q=80"
+                alt="Modelo Midtown - Seccional modular máxima versatilidad"
+                loading="lazy"
+              />
               <div class="model-image-overlay"></div>
               <span class="model-tag">Seccional modular</span>
             </div>
@@ -2005,7 +1965,11 @@
             </div>
 
             <div class="showroom-photo-placeholder">
-              <span class="showroom-photo-text">Showroom Modo Living</span>
+              <img
+                src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&fit=crop&w=800&q=80"
+                alt="Showroom Modo Living - Banfield Este, Buenos Aires"
+                loading="lazy"
+              />
             </div>
           </div>
         </div>
@@ -2062,37 +2026,37 @@
 
       <div class="gallery-grid">
         <div class="gallery-item reveal reveal-delay-1">
-          <div class="gallery-placeholder"></div>
+          <img src="https://images.unsplash.com/photo-1484101403633-562f891dc89a?auto=format&fit=crop&w=800&q=80" alt="Living room con sillón Modo Living" loading="lazy" />
           <div class="gallery-overlay">
             <span class="gallery-overlay-text">Ver modelo &rarr;</span>
           </div>
         </div>
         <div class="gallery-item reveal reveal-delay-2">
-          <div class="gallery-placeholder" style="background: linear-gradient(145deg, #2a2618 0%, #332f1e 100%);"></div>
+          <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=800&q=80" alt="Interior con sillón beige premium" loading="lazy" />
           <div class="gallery-overlay">
             <span class="gallery-overlay-text">Ver modelo &rarr;</span>
           </div>
         </div>
         <div class="gallery-item reveal reveal-delay-3">
-          <div class="gallery-placeholder" style="background: linear-gradient(145deg, #1a2018 0%, #222a1f 100%);"></div>
+          <img src="https://images.unsplash.com/photo-1554995207-c18c203602cb?auto=format&fit=crop&w=800&q=80" alt="Ambientación moderna con sillón verde botella" loading="lazy" />
           <div class="gallery-overlay">
             <span class="gallery-overlay-text">Ver modelo &rarr;</span>
           </div>
         </div>
         <div class="gallery-item reveal reveal-delay-2">
-          <div class="gallery-placeholder"></div>
+          <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80" alt="Sala de estar con sillón de diseño" loading="lazy" />
           <div class="gallery-overlay">
             <span class="gallery-overlay-text">Ver modelo &rarr;</span>
           </div>
         </div>
         <div class="gallery-item reveal reveal-delay-4">
-          <div class="gallery-placeholder" style="background: linear-gradient(145deg, #1e1c18 0%, #282420 100%);"></div>
+          <img src="https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&w=800&q=80" alt="Detalle tapizado premium de alta gama" loading="lazy" />
           <div class="gallery-overlay">
             <span class="gallery-overlay-text">Ver modelo &rarr;</span>
           </div>
         </div>
         <div class="gallery-item reveal reveal-delay-5">
-          <div class="gallery-placeholder" style="background: linear-gradient(145deg, #1a1e18 0%, #20261e 100%);"></div>
+          <img src="https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&w=800&q=80" alt="Ambiente cálido con sillón camel" loading="lazy" />
           <div class="gallery-overlay">
             <span class="gallery-overlay-text">Ver modelo &rarr;</span>
           </div>
